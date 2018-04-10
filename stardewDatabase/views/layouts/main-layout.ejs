@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>GameReview</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <!-- Start of Nav -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">GameVault</a>
+        </div>
+    
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <form class="navbar-form navbar-left" action="/games/search" method="POST">
+            <div class="form-group">
+              <input type="text" class="form-control" name="search" placeholder="Stardew Valley">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/list">User Games</a></li>
+            <% if (login) { %>
+              <li><a href="/user-page">Add Game</a></li>
+              <li><a href="/logout">Log Out!</a></li>
+            <% } else {%>
+              <li><a href="/signup">Sign Up!</a></li>
+              <li><a href="/login">Log In!</a></li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <%- body -%>
+
+    <!-- Footer -->
+    <footer class="footer navbar navbar-inverse">
+      <div class="container">
+
+        <div class="col-sm-12" align="center">
+          
+          <ul>
+            <li class="footer-inline"><a class="navbar-link" href="https://github.com/ElsoMichael">GitHub</a></li>
+            <li class="footer-inline color-text-white footer-center-padding">Created by Michael Elso</li>
+            <li class="footer-inline"><a class="navbar-link" href="https://www.linkedin.com/in/michael-elso/">Linkedin</a></li>
+          </ul>
+          
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+  </body>
+</html>

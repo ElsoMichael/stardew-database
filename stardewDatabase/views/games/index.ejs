@@ -1,0 +1,23 @@
+<div class="container moreSpace moreSpaceBottom">
+  <div class="row">
+
+    <!-- For all Games -->
+    <% list.forEach((game) => { %>
+
+      <ul>
+        <!-- That Have Covers -->
+        <% if(game.cover){%>
+
+          <!-- Display The Cover and Name with Link -->
+          <li class="my-game-list">
+            <a href="/games/<%= game.id %>"><img src="<%= game.cover.url %>"></a>
+            <h4 class="game-name"><a class="a-link" href="/games/<%= game.id %>"><%= game.name %></a></h4>
+          </li>
+
+        <% } %>
+      </ul>
+      
+    <% }); %>
+    
+  </div>
+</div>

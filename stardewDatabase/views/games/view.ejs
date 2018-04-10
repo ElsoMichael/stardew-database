@@ -1,0 +1,199 @@
+<% game.forEach((game) => { %>
+
+  <div class="games-view-background">
+    <div class="container">
+      <div class="boarder-view moreSpace col-lg-12">
+        <h1 class="text-center color-text-black"><%= game.name %></h1>
+        <% if(game.rating) { %>
+          <h3 class="text-center color-text-black">Critic Rating: <%= Math.floor(game.rating) %></h3>
+        <% } %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container moreSpace">
+
+    <!-- Creates Tabs if they exist for the game -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <!-- Summery -->
+      <% if(game.summary) { %>
+        <li class="nav-item">
+          <a class="nav-link active a-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Summary</a>
+        </li>
+      <% } %>
+
+      <!-- Storyline -->
+      <% if(game.storyline) { %>
+        <li class="nav-item">
+          <a class="nav-link a-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Storyline</a>
+        </li>
+      <% } %>
+
+      <!-- Videos -->
+      <% if(game.videos) { %>
+        <li class="nav-item">
+          <a class="nav-link a-link" id="videos-tab" data-toggle="tab" href="#videos" role="tab" aria-controls="videos" aria-selected="false">Videos</a>
+        </li>
+      <% } %>
+
+      <!-- Recommended Games -->
+      <% if(game.games) { %>
+        <li class="nav-item">
+          <a class="nav-link a-link" id="games-like-tab" data-toggle="tab" href="#games-like" role="tab" aria-controls="videos" aria-selected="false">Recommended</a>
+        </li>
+      <% } %>
+
+      <!-- Extra Info for games -->
+      <% if(game.genres || game.platforms || game.themes || game.game_engines || game.player_perspectives || game.game_modes) { %>
+        <li class="nav-item">
+          <a class="nav-link a-link" id="more-info-tab" data-toggle="tab" href="#more-info" role="tab" aria-controls="more-info" aria-selected="false">More Info</a>
+        </li>
+      <% } %>
+    </ul>
+      
+    <!-- Contains the Content for the Tabs -->
+    <div class="tab-content" id="myTabContent">
+
+      <!-- Summery Tab -->
+      <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <h3 class="text-center">Summary</h3>
+        <% if(game.summary) { %>
+          <p class="text-center"><%= game.summary %></p>
+        <% } %>
+      </div>
+
+      <!-- Storyline tab -->
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <h3 class="text-center">Storyline</h3>
+        <% if(game.storyline) { %>
+          <p class="text-center"><%= game.storyline %></p>
+        <% } %>
+      </div>
+
+      <!-- Videos tab -->
+      <div class="tab-pane fade" id="videos" role="tabpanel" aria-labelledby="video-tab">
+        <% if(game.videos) { %>
+          <% game.videos.forEach((video) => { %>
+            <div class="col-sm-6 col-sm-offset-3 moreSpaceBottom">
+              <iframe width="520" height="315" src="https://www.youtube.com/embed/<%= video.video_id %>"></iframe>
+            </div>
+          <% }); %>
+        <% } %>
+      </div>
+
+      <!-- Recommended Game's tab -->
+      <div class="tab-pane fade moreSpaceBottom" id="games-like" role="tabpanel" aria-labelledby="games-like-tab">
+        <h3 class="text-center">Recommended Game's</h3>
+        <% if(game.games) { %>
+          <% game.games.forEach((game) => { %>
+            <% if(game.cover) { %>
+              <div class="col-sm-12 moreSpaceBottom">
+                <a href="/games/<%= game.id %>"><img src="<%= game.cover.url %>"></a>
+                <p class="game-search-spacing"><a class="a-link" href="/games/<%= game.id %>"><%= game.name %></a></p>
+              </div>
+            <% } %>
+          <% }); %>
+        <% } %>
+      </div>
+
+      <!-- More Info Tab -->
+      <div class="tab-pane fade moreSpaceBottom" id="more-info" role="tabpanel" aria-labelledby="more-info-tab">
+        <h3 class="text-center">More Info!</h3>
+
+        <!-- Displays Genres -->
+        <% if(game.genres) { %>
+          <div class="col-sm-12">
+            <h5>Genres</h5>
+            <ul>
+              <% game.genres.forEach((genre) => { %>
+                <li><%= genre.name %></li>
+              <% }); %>
+            </ul>
+          </div>
+        <% } %>
+
+        <!-- Displays Platforms -->
+        <% if(game.platforms) { %>
+          <div class="col-sm-12">
+            <h5>Platforms</h5>
+            <ul>
+              <% game.platforms.forEach((platform) => { %>
+                <li><%= platform.name %></li>
+              <% }); %>
+            </ul>
+          </div>
+        <% } %>
+
+        <!-- Displays Themes -->
+        <% if(game.themes) { %>
+          <div class="col-sm-12">
+            <h5>Themes</h5>
+            <ul>
+              <% game.themes.forEach((theme) => { %>
+                <li><%= theme.name %></li>
+              <% }); %>
+            </ul>
+          </div>
+        <% } %>
+
+        <!-- Displays Game Engines -->
+        <% if(game.game_engines) { %>
+          <div class="col-sm-12">
+            <h5>Game Engines</h5>
+            <ul>
+              <% game.game_engines.forEach((game_engine) => { %>
+                <li><%= game_engine.name %></li>
+              <% }); %>
+            </ul>
+          </div>
+        <% } %>
+
+        <!-- Displays Player Perspectives -->
+        <% if(game.player_perspectives) { %>
+          <div class="col-sm-12">
+            <h5>Player Perspectives</h5>
+            <ul>
+              <% game.player_perspectives.forEach((player_perspective) => { %>
+                <li><%= player_perspective.name %></li>
+              <% }); %>
+            </ul>
+          </div>
+        <% } %>
+
+        <!-- Displays Game Modes -->
+        <% if(game.game_modes) { %>
+          <div class="col-sm-12">
+            <h5>Game Modes</h5>
+            <ul>
+              <% game.game_modes.forEach((game_mode) => { %>
+                <p><%= game_mode.name %></a></p>
+              <% }); %>
+            </ul>
+          </div>
+        <% } %>
+      </div>
+      <!-- End of More Info Tab -->
+
+
+    </div>
+
+  </div>
+
+  <!-- Displays Screen Shots -->
+  <% if(game.screenshots) { %>
+    <div class="container moreSpace moreSpaceBottom">
+      <div class="navbar-inverse background-border moreSpaceBottom">
+        <div class="img-view">
+          <% if(game.cover) { %>
+            <img class="image-inline-scroll img-responsive" src="https://images.igdb.com/igdb/image/upload/t_cover_big/<%= game.cover.cloudinary_id %>.jpg">
+          <% } %>
+          <% game.screenshots.forEach((img) => { %>
+            <img class="image-inline-scroll img-responsive" src="https://images.igdb.com/igdb/image/upload/t_screenshot_big/<%= img.cloudinary_id %>">
+          <% }); %>
+        </div>
+      </div>
+    </div>
+  <% } %>
+
+
+<% }); %>

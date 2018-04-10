@@ -1,0 +1,64 @@
+<!-- Head -->
+<div class="games-view-background">
+
+  <div class="contiainer">
+    <div class="row">
+
+      <div class="col-lg-12">
+      
+      <!-- Display Game Title -->
+      <div class="boarder-view smallSpace col-sm-6 col-sm-offset-3">
+        <h1 class="text-center color-text-black"><%= info.title %></h1>
+      </div>
+
+      <div class="col-sm-2 col-sm-offset-5 edit-buttons">
+
+        <!-- If Login -->
+        <% if (login) { %>
+
+          <!-- And Your the User Who Created this -->
+          <% if (user._id.equals(info._creator)) { %>
+
+            <!-- Delete -->
+            <form class="game-search-spacing edit-buttons" action="<%= info._id %>/delete" method="POST">
+              <button type="submit">Delete Game</button>
+            </form>
+
+            <!-- Edit -->
+            <a class="game-search-spacing" href="<%= info._id %>/edit">Edit</a>
+
+          <% } %>
+        <% } %>
+        
+      </div>
+
+    </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+<div class="container smallSpace moreSpaceBottom">
+
+  <div class="col-sm-12">
+
+    <% if (info.platform === "") { %>
+        <h2 class="text-center color-text-black">Creator: <%= info.author %></h2>
+    <% } else { %>
+        <h2 class="text-center color-text-black">Creator: <a class="a-link" href="<%= info.platform %>"><%= info.author %></a></h2>
+    <% } %>
+
+    <hr>
+
+    <div class="smallSpace">
+      <p class="text-center color-text-black body-text"><%= info.summary %></p>
+    </div>
+
+    <h3 class="text-center smallSpace">Try <a class="a-link" href="<%= info.link %>"><%= info.title %> here!</a></h3>
+  </div>
+</div>

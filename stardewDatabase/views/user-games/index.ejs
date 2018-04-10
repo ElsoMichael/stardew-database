@@ -1,0 +1,29 @@
+<div class="container moreSpaceBottom">
+  <div class="row">
+
+    <div class="col-sm-12">
+      <!-- Title for User Game List -->
+      <h1 class="text-center moreSpace">User's Game's</h1>
+      <hr>
+    </div>
+
+    <div class="col-sm-6 col-sm-offset-3">
+    <!-- For Each User Game -->
+    <% game.forEach((userGame) => { %>
+      <div class="col-sm-12">
+        <div class="user-game-list">
+
+          <!-- Display User Game Title -->
+          <h2 class="text-center"><%= userGame.title %></h2>
+
+          <!-- Link For More Details -->
+          <p class="text-center"><a href="<%= userGame._id %>">More!</a></p>
+
+          </div>
+        </div>
+      <% }) %>
+
+    </div>
+    
+  </div>
+</div>
