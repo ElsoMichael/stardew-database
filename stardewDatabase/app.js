@@ -33,6 +33,8 @@ app.use(passport.session());
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+const api = require('./routes/api');
+const auth = require('./routes/auth');
 
 app.use('/', index);
 app.use('/users', users);
